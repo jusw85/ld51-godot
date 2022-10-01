@@ -12,7 +12,6 @@ radius = 105.119
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 3 )
-walk_speed = 800.0
 
 [node name="DirectionalInput" type="Node" parent="."]
 script = ExtResource( 2 )

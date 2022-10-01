@@ -26,6 +26,6 @@ func _on_Area2D_area_entered(area):
 	if _player == null:
 		_player = area.get_parent()
 		_tween.follow_method(
-			self, "set_global_position", global_position, _player, "get_global_position", 0.1
+			self, "set_global_position", global_position, _player, "get_global_position", 0.2
 		)
 		_tween.start()

@@ -31,7 +31,7 @@ Globals="*res://globals.gd"
 [display]
 
 window/size/width=960
-window/size/height=540
+window/size/height=512
 window/size/resizable=false
 window/vsync/use_vsync=false
 

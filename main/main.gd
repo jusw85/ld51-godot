@@ -7,6 +7,8 @@ onready var player = $Player
 
 func _ready():
 	randomize()
+	var spawn = get_tree().get_nodes_in_group("spawn")[0]
+	player.position = spawn.position
 
 
 func _on_Timer_timeout():

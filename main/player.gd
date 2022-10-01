@@ -3,8 +3,8 @@ extends KinematicBody2D
 
 signal gems_changed()
 
-export var walk_speed := 300.0
-export var power := 100.0
+export var walk_speed := 100.0
+export var power := 400.0
 var gems := 0
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
