@@ -2,6 +2,7 @@
 extends KinematicBody2D
 
 signal gems_changed()
+signal moved()
 
 export var walk_speed := 100.0
 export var power := 400.0
@@ -15,14 +16,18 @@ func _physics_process(_delta) -> void:
 	# simulate and update internal variables
 	# transition state
 	var dir = directional_input.get_input_direction()
+	if dir.length_squared() <= 0:
+		return
+
+	emit_signal("moved")
+
 	var velocity = dir * walk_speed
 	move_and_slide(velocity)
 
-	if dir.length_squared() > 0:
-		for i in get_slide_count():
-			var collider = get_slide_collision(i).collider
-			if collider.is_in_group("wall"):
-				collider.bash(power * _delta)
+	for i in get_slide_count():
+		var collider = get_slide_collision(i).collider
+		if collider.is_in_group("wall"):
+			collider.bash(power * _delta)
 
 func add_gems(i):
 	gems += i

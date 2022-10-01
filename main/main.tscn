@@ -63,7 +63,6 @@ walk_speed = 400.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
-autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -87,4 +86,5 @@ text = "0"
 [node name="Node2D" parent="Stage" instance=ExtResource( 3 )]
 
 [connection signal="gems_changed" from="Player" to="." method="_on_KinematicBody2D_gems_changed"]
+[connection signal="moved" from="Player" to="." method="_on_Player_moved"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
