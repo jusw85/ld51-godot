@@ -1,9 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
 [ext_resource path="res://common/quit_on_action.gd" type="Script" id=2]
 [ext_resource path="res://main/exit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/gem.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 480, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 480, 16 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 270 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 270 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://main/Pixelar Regular W01 Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = SubResource( 1 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,8 +32,141 @@ script = ExtResource( 1 )
 [node name="QuitOnAction" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="Exit" parent="." instance=ExtResource( 3 )]
-position = Vector2( 823, 96 )
+[node name="Border" type="Node" parent="."]
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 134, 396 )
+[node name="StaticBody2D" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D"]
+position = Vector2( 480, -16 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D2"]
+position = Vector2( 480, 556 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D3"]
+position = Vector2( -16, 270 )
+shape = SubResource( 5 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/StaticBody2D4"]
+position = Vector2( 976, 270 )
+shape = SubResource( 6 )
+
+[node name="Exit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 897, 444 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 116, 95 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_right = 97.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 2 )
+text = "10.0"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+margin_left = 1.0
+margin_top = 25.0
+margin_right = 98.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.92549, 0.964706, 0.101961, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Node2D" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 246, 49 )
+
+[node name="Node2D2" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 237, 121 )
+
+[node name="Node2D3" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 233, 191 )
+
+[node name="Node2D4" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 231, 262 )
+
+[node name="Node2D5" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 231, 331 )
+
+[node name="Node2D6" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 230, 398 )
+
+[node name="Node2D7" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 400, 499 )
+
+[node name="Node2D8" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 398, 431 )
+
+[node name="Node2D9" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 402, 364 )
+
+[node name="Node2D10" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 401, 298 )
+
+[node name="Node2D11" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 403, 228 )
+
+[node name="Node2D12" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 406, 157 )
+
+[node name="Node2D13" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 578, 44 )
+
+[node name="Node2D14" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 580, 114 )
+
+[node name="Node2D15" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 591, 187 )
+
+[node name="Node2D16" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 593, 261 )
+
+[node name="Node2D17" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 601, 337 )
+
+[node name="Node2D18" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 599, 404 )
+
+[node name="Node2D19" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 766, 493 )
+
+[node name="Node2D20" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 766, 421 )
+
+[node name="Node2D21" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 772, 353 )
+
+[node name="Node2D22" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 771, 284 )
+
+[node name="Gems" type="Node" parent="."]
+
+[node name="Node2D" parent="Gems" instance=ExtResource( 6 )]
+position = Vector2( 297, 378 )
+
+[node name="Node2D2" parent="Gems" instance=ExtResource( 6 )]
+position = Vector2( 338, 111 )
+
+[node name="Node2D3" parent="Gems" instance=ExtResource( 6 )]
+position = Vector2( 297, 258 )
+
+[node name="Node2D4" parent="Gems" instance=ExtResource( 6 )]
+position = Vector2( 888, 63 )
+
+[connection signal="gems_changed" from="Player" to="." method="_on_KinematicBody2D_gems_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
