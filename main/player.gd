@@ -18,10 +18,11 @@ func _physics_process(_delta) -> void:
 	var velocity = dir * walk_speed
 	move_and_slide(velocity)
 
-	for i in get_slide_count():
-		var collider = get_slide_collision(i).collider
-		if collider.is_in_group("wall"):
-			collider.bash(power * _delta)
+	if dir.length_squared() > 0:
+		for i in get_slide_count():
+			var collider = get_slide_collision(i).collider
+			if collider.is_in_group("wall"):
+				collider.bash(power * _delta)
 
 func add_gems(i):
 	gems += i
