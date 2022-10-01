@@ -1,0 +1,20 @@
+#!/bin/bash
+
+build_dir="../builds/"
+exe_name="out"
+
+main() {
+  local html_dir="html5/"
+
+  mkdir -p "${build_dir}"
+  mkdir -p "${build_dir}""${html_dir}"
+  godot --export "HTML5" "${build_dir}""${html_dir}"/index.html
+  pushd "${build_dir}"
+  zip -r build.zip "${html_dir}"
+  popd
+
+  godot --export "Linux/X11" "${build_dir}""${exe_name}".x86_64
+  godot --export "Windows Desktop" "${build_dir}""${exe_name}".exe
+}
+
+main
