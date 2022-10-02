@@ -29,7 +29,7 @@ margin_bottom = -116.0
 margin_right = 725.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
-text = "Upgrade walk speed"
+text = "Upgrade walk speed (-5)"
 script = ExtResource( 2 )
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
@@ -37,7 +37,7 @@ margin_top = 46.0
 margin_right = 725.0
 margin_bottom = 88.0
 custom_fonts/font = SubResource( 1 )
-text = "Upgrade bash power"
+text = "Upgrade bash power (-5)"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 margin_top = 92.0
@@ -56,4 +56,6 @@ custom_colors/font_color = Color( 0.92549, 0.964706, 0.101961, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "0"
 
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_Button3_pressed"]

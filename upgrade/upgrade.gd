@@ -22,3 +22,15 @@ func _process(_delta):
 func _on_Button3_pressed():
 	Events.emit_signal("upgrade_exited")
 	queue_free()
+
+
+func _on_Button_pressed():
+	if player.gems >= 5:
+		player.add_gems(-5)
+		player.walk_speed += 50
+
+
+func _on_Button2_pressed():
+	if player.gems >= 5:
+		player.add_gems(-5)
+		player.power += 50
