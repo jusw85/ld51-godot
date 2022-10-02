@@ -7,6 +7,7 @@ const Player := preload("res://main/spawn.tscn")
 const Gem := preload("res://main/gem.tscn")
 const Wall := preload("res://main/wall.tscn")
 const Exit := preload("res://main/exit.tscn")
+var difficulty_modifier = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +21,10 @@ func _ready():
 			"gem":
 				_add_node(pos.y, pos.x, Gem.instance())
 			"wall":
-				_add_node(pos.y, pos.x, Wall.instance())
+				var obj = Wall.instance()
+				if difficulty_modifier > 0:
+					obj.hp += randi() % (10 * difficulty_modifier)
+				_add_node(pos.y, pos.x, obj)
 			"exit":
 				_add_node(pos.y, pos.x, Exit.instance())
 

@@ -71,6 +71,7 @@ func _on_upgrade_exit():
 
 	var stage_num = (randi() % 5) + 1
 	var new_stage = load("res://stages/stage" + str(stage_num) + ".tscn").instance()
+	new_stage.difficulty_modifier = _stage_number
 	stage.add_child(new_stage)
 	var spawn = get_tree().get_nodes_in_group("spawn")[0]
 	player.position = spawn.position
