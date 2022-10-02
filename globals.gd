@@ -8,4 +8,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func restart():
+#	print(get_tree().current_scene)
+#	get_tree().current_scene.queue_free()
 	get_tree().change_scene(ProjectSettings.get_setting("application/run/main_scene"))

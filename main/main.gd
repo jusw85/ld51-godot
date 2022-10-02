@@ -9,6 +9,8 @@ onready var canvas = $CanvasLayer
 onready var player = $Player
 onready var stage = $Stage
 
+var _stage_number := 0
+
 func _ready():
 	randomize()
 
@@ -22,8 +24,13 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	print("kaboom")
-	Globals.restart()
+	var end = load("res://end/end.tscn").instance()
+	get_tree().get_root().add_child(end)
+	var label = end.get_node("Label")
+	label.text = label.text % _stage_number
+	get_tree().current_scene = end
+	queue_free()
+
 
 func _process(_delta):
 	if !timer.is_stopped():
@@ -40,11 +47,13 @@ func _on_Player_moved():
 
 
 func _on_stage_exit():
+	_stage_number += 1
 	player.paused = true
 	player.visible = false
 	player.position = Vector2(-1000, -1000)
 
 	timer_label.visible = false
+	timer.stop()
 	stage.get_child(0).queue_free()
 
 	var upgrade = load("res://upgrade/upgrade.tscn").instance()
