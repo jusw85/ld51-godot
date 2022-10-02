@@ -83,3 +83,5 @@ const Levels = [
 	preload("res://stages/stage4.tscn"),
 	preload("res://stages/stage5.tscn"),
 ]
+
+const LevelUpgrade = preload("res://stages/stage_upgrade.tscn")

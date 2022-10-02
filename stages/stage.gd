@@ -3,7 +3,7 @@ extends Node2D
 
 onready var tilemap = $TileMap
 
-const Player := preload("res://main/spawn.tscn")
+const Spawn := preload("res://main/spawn.tscn")
 const Gem := preload("res://main/gem.tscn")
 const Wall := preload("res://main/wall.tscn")
 const Exit := preload("res://main/exit.tscn")
@@ -17,7 +17,7 @@ func _ready():
 		var id = tilemap.get_cell(pos.x, pos.y)
 		match ts.tile_get_name(id):
 			"player":
-				_add_node(pos.y, pos.x, Player.instance())
+				_add_node(pos.y, pos.x, Spawn.instance())
 			"gem":
 				_add_node(pos.y, pos.x, Gem.instance())
 			"wall":
