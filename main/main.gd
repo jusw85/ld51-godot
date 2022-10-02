@@ -60,7 +60,16 @@ func _on_upgrade_exit():
 	timer.stop()
 	timer_label.text = "%.2f" % timer.wait_time
 
-	var new_stage = load("res://stages/stage1.tscn").instance()
+	var stage_num = (randi() % 5) + 1
+	var new_stage = load("res://stages/stage" + str(stage_num) + ".tscn").instance()
 	stage.add_child(new_stage)
 	var spawn = get_tree().get_nodes_in_group("spawn")[0]
 	player.position = spawn.position
+
+const Levels = [
+	preload("res://stages/stage1.tscn"),
+	preload("res://stages/stage2.tscn"),
+	preload("res://stages/stage3.tscn"),
+	preload("res://stages/stage4.tscn"),
+	preload("res://stages/stage5.tscn"),
+]
