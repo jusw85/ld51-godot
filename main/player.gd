@@ -1,12 +1,13 @@
 # warning-ignore-all:return_value_discarded
 extends KinematicBody2D
 
-signal gems_changed()
-signal moved()
+signal gems_changed
+signal moved
 
 export var walk_speed := 100.0
 export var power := 400.0
 var gems := 0
+var paused = false
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
 
@@ -15,6 +16,8 @@ func _physics_process(_delta) -> void:
 	# collect input
 	# simulate and update internal variables
 	# transition state
+	if paused:
+		return
 	var dir = directional_input.get_input_direction()
 	if dir.length_squared() <= 0:
 		return
