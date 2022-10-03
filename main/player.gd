@@ -11,6 +11,7 @@ var gems := 0
 var paused := false
 var gooped := 0.0
 var goop_shoes := false
+var lantern := false
 var upgrade_speed := 100.0
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
@@ -25,7 +26,10 @@ func get_mask_size() -> float:
 func set_mask_size(p_mask_size):
 	mask_size = clamp(p_mask_size, 0.0, 1.0)
 #	mask.self_modulate.a = 1.0 - mask_size
-	mask.self_modulate.a = 1 - (0.0001) * exp(mask_size * (log(1 / 0.0001)))
+	if !lantern:
+		mask.self_modulate.a = 1 - (0.0001) * exp(mask_size * (log(1 / 0.0001)))
+	else:
+		mask.self_modulate.a = 0.0
 	mask.material.set_shader_param("size", mask_size)
 
 

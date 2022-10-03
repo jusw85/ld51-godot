@@ -41,7 +41,7 @@ func _process(_delta):
 	var mask_size = 1.0
 	if !timer.is_stopped():
 		timer_label.text = "%.2f" % timer.time_left
-		if _stage_number % 5 != 0:
+		if _stage_number % 5 != 0 && !player.lantern:
 			mask_size = timer.time_left / 10.0
 
 	player.mask_size = mask_size

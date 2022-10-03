@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://stages/stage.tres" type="TileSet" id=1]
 [ext_resource path="res://stages/stage.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://stages/upgrade3.gd" type="Script" id=7]
 [ext_resource path="res://stages/upgrade4.gd" type="Script" id=8]
 [ext_resource path="res://stages/upgrade5.gd" type="Script" id=9]
+[ext_resource path="res://stages/upgrade6.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -31,6 +32,7 @@ tile_data = PoolIntArray( 262151, 0, 0, 327686, 5, 0, 327687, 5, 0, 327688, 5, 0
 
 [node name="Upgrade1" type="Node2D" parent="."]
 position = Vector2( 84, 83 )
+z_index = 1
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -64,6 +66,7 @@ align = 1
 
 [node name="Upgrade2" type="Node2D" parent="."]
 position = Vector2( 882, 74 )
+z_index = 1
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -96,6 +99,7 @@ Bash ( -5)"
 
 [node name="Upgrade4" type="Node2D" parent="."]
 position = Vector2( 879, 428 )
+z_index = 1
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
@@ -128,6 +132,7 @@ Magnet ( -5)"
 
 [node name="Upgrade5" type="Node2D" parent="."]
 position = Vector2( 491, 77 )
+z_index = 1
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
@@ -160,6 +165,7 @@ align = 1
 
 [node name="Upgrade3" type="Node2D" parent="."]
 position = Vector2( 78, 431 )
+z_index = 1
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -190,6 +196,38 @@ custom_fonts/font = SubResource( 3 )
 text = "Buy Goop
 Shoes (-20)"
 
+[node name="Upgrade6" type="Node2D" parent="."]
+position = Vector2( 78, 292 )
+z_index = 1
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Upgrade6"]
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Upgrade6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrade6/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Upgrade6"]
+margin_left = -19.0
+margin_top = 12.0
+margin_right = 21.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 2 )
+text = "500"
+
+[node name="Label2" type="Label" parent="Upgrade6"]
+margin_left = -51.0
+margin_top = -50.0
+margin_right = 53.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 3 )
+text = "Lantern (-20)"
+
 [connection signal="body_entered" from="Upgrade1/Area2D" to="Upgrade1" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Upgrade1/Area2D" to="Upgrade1" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Upgrade2/Area2D" to="Upgrade2" method="_on_Area2D_body_entered"]
@@ -200,3 +238,5 @@ Shoes (-20)"
 [connection signal="body_exited" from="Upgrade5/Area2D" to="Upgrade5" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Upgrade3/Area2D" to="Upgrade3" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Upgrade3/Area2D" to="Upgrade3" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Upgrade6/Area2D" to="Upgrade6" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Upgrade6/Area2D" to="Upgrade6" method="_on_Area2D_body_exited"]
