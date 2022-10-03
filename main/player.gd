@@ -11,6 +11,7 @@ var gems := 0
 var paused := false
 var gooped := 0.0
 var goop_shoes := false
+var upgrade_speed := 100.0
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
 onready var goop_label = $Panel

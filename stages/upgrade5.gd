@@ -24,7 +24,7 @@ func _process(delta):
 		hp = clamp(hp - (delta * player.upgrade_speed), 0, hp)
 		if hp <= 0:
 			hp = 100
-			player.power += 50
+			player.upgrade_speed += 40.0
 			player.add_gems(-5)
 
 

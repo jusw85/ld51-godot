@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://stages/stage.tres" type="TileSet" id=1]
 [ext_resource path="res://stages/stage.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://stages/upgrade2.gd" type="Script" id=6]
 [ext_resource path="res://stages/upgrade3.gd" type="Script" id=7]
 [ext_resource path="res://stages/upgrade4.gd" type="Script" id=8]
+[ext_resource path="res://stages/upgrade5.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -26,10 +27,10 @@ script = ExtResource( 2 )
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 196615, 0, 0, 327687, 1, 0 )
+tile_data = PoolIntArray( 327687, 0, 0, 458759, 1, 0 )
 
 [node name="Upgrade1" type="Node2D" parent="."]
-position = Vector2( 205, 167 )
+position = Vector2( 81, 78 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -61,7 +62,7 @@ text = "Upgrade
 Speed ( -5)"
 
 [node name="Upgrade2" type="Node2D" parent="."]
-position = Vector2( 765, 173 )
+position = Vector2( 882, 74 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -93,7 +94,7 @@ text = "Upgrade
 Bash ( -5)"
 
 [node name="Upgrade4" type="Node2D" parent="."]
-position = Vector2( 764, 392 )
+position = Vector2( 879, 428 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
@@ -124,8 +125,40 @@ custom_fonts/font = SubResource( 3 )
 text = "Upgrade
 Magnet ( -5)"
 
+[node name="Upgrade5" type="Node2D" parent="."]
+position = Vector2( 491, 77 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Upgrade5"]
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Upgrade5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrade5/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Upgrade5"]
+margin_left = -19.0
+margin_top = 12.0
+margin_right = 21.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 2 )
+text = "100"
+
+[node name="Label2" type="Label" parent="Upgrade5"]
+margin_left = -77.0
+margin_top = -57.0
+margin_right = 90.0
+custom_fonts/font = SubResource( 3 )
+text = "Upgrade
+Upgrade Speed ( -5)"
+align = 1
+
 [node name="Upgrade3" type="Node2D" parent="."]
-position = Vector2( 115, 419 )
+position = Vector2( 78, 431 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -162,5 +195,7 @@ Shoes (-20)"
 [connection signal="body_exited" from="Upgrade2/Area2D" to="Upgrade2" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Upgrade4/Area2D" to="Upgrade4" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Upgrade4/Area2D" to="Upgrade4" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Upgrade5/Area2D" to="Upgrade5" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Upgrade5/Area2D" to="Upgrade5" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Upgrade3/Area2D" to="Upgrade3" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Upgrade3/Area2D" to="Upgrade3" method="_on_Area2D_body_exited"]

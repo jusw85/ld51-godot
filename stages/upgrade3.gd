@@ -11,7 +11,7 @@ var hp := 500.0
 var player
 onready var label = $Label
 onready var label2 = $Label2
-export var upgrade_speed := 100
+#export var upgrade_speed := 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,7 +28,7 @@ func _process(delta):
 
 	label.text = str("%d" % hp)
 	if upgrading && player.gems >= 20 && !player.goop_shoes:
-		hp = clamp(hp - (delta * upgrade_speed), 0, hp)
+		hp = clamp(hp - (delta * player.upgrade_speed), 0, hp)
 		if hp <= 0:
 			player.goop_shoes = true
 			player.add_gems(-20)
