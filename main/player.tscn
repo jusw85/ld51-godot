@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/player.png" type="Texture" id=1]
 [ext_resource path="res://common/directional_input.gd" type="Script" id=2]
@@ -17,6 +17,13 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 18
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.576471, 0.101961, 0.964706, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
 font_data = ExtResource( 4 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
@@ -66,3 +73,22 @@ margin_bottom = 20.0
 custom_colors/font_color = Color( 0.415686, 0.745098, 0.188235, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "shoes"
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = -3.0
+margin_top = -34.0
+margin_right = 37.0
+margin_bottom = -14.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -3.0
+custom_colors/font_color = Color( 0.92549, 0.964706, 0.101961, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "100"
+align = 1

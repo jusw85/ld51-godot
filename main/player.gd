@@ -1,4 +1,5 @@
 # warning-ignore-all:return_value_discarded
+# warning-ignore-all:unused_signal
 extends KinematicBody2D
 
 signal gems_changed
@@ -13,6 +14,7 @@ var goop_shoes := false
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
 onready var goop_label = $Panel
+onready var money_label = $Panel2/Label
 
 
 func _ready():
@@ -46,4 +48,5 @@ func _physics_process(_delta) -> void:
 
 func add_gems(i):
 	gems += i
-	emit_signal("gems_changed")
+	money_label.text = str(gems)
+#	emit_signal("gems_changed")

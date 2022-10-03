@@ -33,6 +33,7 @@ func _process(delta):
 			player.goop_shoes = true
 			player.add_gems(-20)
 			player.goop_label.visible = true
+			label2.text = "Bought!"
 
 
 func _on_Area2D_body_entered(_body):

@@ -76,6 +76,7 @@ custom_fonts/font = SubResource( 2 )
 text = "10.0"
 
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
+visible = false
 margin_top = 27.0
 margin_right = 40.0
 margin_bottom = 54.0
