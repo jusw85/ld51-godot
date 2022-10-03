@@ -37,10 +37,10 @@ func _physics_process(_delta) -> void:
 	emit_signal("moved")
 
 	var velocity
-	if goop_shoes:
+	if gooped <= 0 || goop_shoes:
 		velocity = dir * walk_speed
 	else:
-		velocity = dir * (walk_speed / (gooped + 1.0))
+		velocity = dir * (walk_speed / 4.0)
 	move_and_slide(velocity)
 
 	for i in get_slide_count():
