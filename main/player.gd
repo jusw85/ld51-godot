@@ -18,8 +18,19 @@ onready var goop_label = $Panel
 onready var money_label = $Panel2/Label
 onready var magnet = $Area2D/CollisionShape2D
 
+onready var mask: Sprite = $Mask
+var mask_size setget set_mask_size, get_mask_size
+func get_mask_size() -> float:
+	return mask.material.get_shader_param("size")
+func set_mask_size(p_mask_size):
+	mask_size = clamp(p_mask_size, 0.0, 1.0)
+#	mask.self_modulate.a = 1.0 - mask_size
+	mask.self_modulate.a = 1 - (0.0001) * exp(mask_size * (log(1 / 0.0001)))
+	mask.material.set_shader_param("size", mask_size)
+
 
 func _ready():
+	self.mask_size = 1.0
 	if goop_shoes:
 		goop_label.visible = true
 

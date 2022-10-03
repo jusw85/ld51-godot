@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main/player.png" type="Texture" id=1]
 [ext_resource path="res://common/directional_input.gd" type="Script" id=2]
 [ext_resource path="res://main/player.gd" type="Script" id=3]
 [ext_resource path="res://font.tres" type="DynamicFontData" id=4]
+[ext_resource path="res://main/mask.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -25,6 +26,40 @@ bg_color = Color( 0.576471, 0.101961, 0.964706, 1 )
 [sub_resource type="DynamicFont" id=6]
 size = 24
 font_data = ExtResource( 4 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+const vec2 mid = vec2(0.5);
+uniform float size: hint_range(0.0, 1.0)  = 1.0; // slider_val
+
+//https://www.dr-lex.be/info-stuff/volumecontrols.html
+//https://stackoverflow.com/questions/846221/logarithmic-slider
+const float slider_left = 0.0;
+const float slider_right = 1.0;
+const float target_left = 0.1;
+const float target_right = 1.0;
+// workaround
+// https://github.com/godotengine/godot/issues/48204
+// if slider = 0.1 ->
+//   (target_left ^ 0.9) * (target_right ^ 0.1)
+const float log_target_left = log(target_left) + 0.0; 
+const float log_target_right = log(target_right) + 0.0;
+const float scale = (log_target_right - log_target_left) / (slider_right - slider_left);
+
+void fragment() {
+	float dist = exp(log_target_left + scale * (size - slider_left));
+	float a = distance(UV, mid) / dist;
+	a = clamp(a, 0.0, 1.0);
+	vec3 c = vec3(0.0);
+	COLOR = vec4(c, a);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/size = 1.0
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
 collision_layer = 0
@@ -92,3 +127,7 @@ custom_colors/font_color = Color( 0.92549, 0.964706, 0.101961, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "100"
 align = 1
+
+[node name="Mask" type="Sprite" parent="."]
+material = SubResource( 8 )
+texture = ExtResource( 5 )
