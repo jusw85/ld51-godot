@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://stages/stage.tres" type="TileSet" id=1]
 [ext_resource path="res://stages/stage.gd" type="Script" id=2]
 [ext_resource path="res://upgrade/upgrade1.png" type="Texture" id=3]
 [ext_resource path="res://stages/upgrade1.gd" type="Script" id=4]
 [ext_resource path="res://font.tres" type="DynamicFontData" id=5]
+[ext_resource path="res://stages/upgrade2.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -57,5 +58,39 @@ custom_fonts/font = SubResource( 3 )
 text = "Upgrade
 Speed ( -5)"
 
+[node name="Upgrade2" type="Node2D" parent="."]
+position = Vector2( 765, 173 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Upgrade2"]
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Upgrade2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrade2/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Upgrade2"]
+margin_left = -19.0
+margin_top = 12.0
+margin_right = 21.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 2 )
+text = "100"
+
+[node name="Label2" type="Label" parent="Upgrade2"]
+margin_left = -41.0
+margin_top = -50.0
+margin_right = 78.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 3 )
+text = "Upgrade
+Bash ( -5)"
+
 [connection signal="body_entered" from="Upgrade1/Area2D" to="Upgrade1" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Upgrade1/Area2D" to="Upgrade1" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Upgrade2/Area2D" to="Upgrade2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Upgrade2/Area2D" to="Upgrade2" method="_on_Area2D_body_exited"]
