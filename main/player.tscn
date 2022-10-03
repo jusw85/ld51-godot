@@ -130,4 +130,5 @@ align = 1
 
 [node name="Mask" type="Sprite" parent="."]
 material = SubResource( 8 )
+z_index = 5
 texture = ExtResource( 5 )

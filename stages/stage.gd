@@ -8,6 +8,7 @@ const Gem := preload("res://main/gem.tscn")
 const Wall := preload("res://main/wall.tscn")
 const Exit := preload("res://main/exit.tscn")
 const Goop := preload("res://main/goop.tscn")
+const Unbreakable := preload("res://main/unbreakable.tscn")
 var difficulty_modifier = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +23,8 @@ func process_tilemap(tilemap):
 	var ts = tilemap.get_tileset()
 	for pos in tilemap.get_used_cells():
 		var id = tilemap.get_cell(pos.x, pos.y)
-		match ts.tile_get_name(id):
+		var tile_name = ts.tile_get_name(id)
+		match tile_name:
 			"player":
 				_add_node(pos.y, pos.x, Spawn.instance())
 			"gem":
@@ -36,6 +38,8 @@ func process_tilemap(tilemap):
 				_add_node(pos.y, pos.x, Exit.instance())
 			"goop":
 				_add_node(pos.y, pos.x, Goop.instance())
+			"unbreakable":
+				_add_node(pos.y, pos.x, Unbreakable.instance())
 
 		tilemap.set_cell(pos.x, pos.y, TileMap.INVALID_CELL)
 	pass
