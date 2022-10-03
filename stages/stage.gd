@@ -33,7 +33,8 @@ func process_tilemap(tilemap):
 			"wall":
 				var obj = Wall.instance()
 				if difficulty_modifier > 0:
-					obj.hp += randi() % (10 * difficulty_modifier)
+#					obj.hp += randi() % (10 * difficulty_modifier)
+					obj.hp += (7 * difficulty_modifier) + ((randi() % 51) - 50)
 				_add_node(pos.y, pos.x, obj)
 			"exit":
 				_add_node(pos.y, pos.x, Exit.instance())
