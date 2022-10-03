@@ -105,12 +105,16 @@ func _on_upgrade_exit():
 	player.position = spawn.position
 
 
+#const Levels = [
+#	preload("res://stages/stage1.tscn"),
+#	preload("res://stages/stage2.tscn"),
+#	preload("res://stages/stage3.tscn"),
+#	preload("res://stages/stage4.tscn"),
+#	preload("res://stages/stage5.tscn"),
+#]
 const Levels = [
 	preload("res://stages/stage1.tscn"),
-	preload("res://stages/stage2.tscn"),
-	preload("res://stages/stage3.tscn"),
-	preload("res://stages/stage4.tscn"),
-	preload("res://stages/stage5.tscn"),
+	preload("res://stages/stage10.tscn"),
 ]
 
 const LevelUpgrade = preload("res://stages/stage_upgrade.tscn")

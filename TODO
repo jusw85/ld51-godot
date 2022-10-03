@@ -1,0 +1,12 @@
+more stages
+
+skills
+  bash/berserk (increase walk_speed + power)
+  teleport
+  roar (destroy surrounding blocks, possible expanding red circle visual)
+
+activate skills
+upgrade skills
+
+upgrade avoid tolls
+switch to raycast
