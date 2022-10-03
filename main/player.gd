@@ -65,5 +65,7 @@ func _physics_process(_delta) -> void:
 
 func add_gems(i):
 	gems += i
+	if gems < 0:
+		gems = 0
 	money_label.text = str(gems)
 #	emit_signal("gems_changed")

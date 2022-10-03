@@ -99,6 +99,7 @@ text = "Goop shoes"
 [node name="Node2D" parent="Stage" instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( -129, -106 )
 walk_speed = 400.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

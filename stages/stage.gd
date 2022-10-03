@@ -9,6 +9,7 @@ const Wall := preload("res://main/wall.tscn")
 const Exit := preload("res://main/exit.tscn")
 const Goop := preload("res://main/goop.tscn")
 const Unbreakable := preload("res://main/unbreakable.tscn")
+const Toll := preload("res://main/toll.tscn")
 var difficulty_modifier = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -40,6 +41,8 @@ func process_tilemap(tilemap):
 				_add_node(pos.y, pos.x, Goop.instance())
 			"unbreakable":
 				_add_node(pos.y, pos.x, Unbreakable.instance())
+			"toll":
+				_add_node(pos.y, pos.x, Toll.instance())
 
 		tilemap.set_cell(pos.x, pos.y, TileMap.INVALID_CELL)
 	pass

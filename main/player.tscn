@@ -125,7 +125,7 @@ anchor_bottom = 1.0
 margin_top = -3.0
 custom_colors/font_color = Color( 0.92549, 0.964706, 0.101961, 1 )
 custom_fonts/font = SubResource( 6 )
-text = "100"
+text = "0"
 align = 1
 
 [node name="Mask" type="Sprite" parent="."]
