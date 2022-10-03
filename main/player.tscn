@@ -9,7 +9,7 @@
 extents = Vector2( 24, 24 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 100.0
+radius = 36.0
 
 [sub_resource type="DynamicFont" id=4]
 size = 36

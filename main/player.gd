@@ -15,6 +15,7 @@ var goop_shoes := false
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
 onready var goop_label = $Panel
 onready var money_label = $Panel2/Label
+onready var magnet = $Area2D/CollisionShape2D
 
 
 func _ready():
