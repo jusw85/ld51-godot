@@ -7,6 +7,7 @@ const Spawn := preload("res://main/spawn.tscn")
 const Gem := preload("res://main/gem.tscn")
 const Wall := preload("res://main/wall.tscn")
 const Exit := preload("res://main/exit.tscn")
+const Goop := preload("res://main/goop.tscn")
 var difficulty_modifier = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +28,8 @@ func _ready():
 				_add_node(pos.y, pos.x, obj)
 			"exit":
 				_add_node(pos.y, pos.x, Exit.instance())
+			"goop":
+				_add_node(pos.y, pos.x, Goop.instance())
 
 		tilemap.set_cell(pos.x, pos.y, TileMap.INVALID_CELL)
 	pass

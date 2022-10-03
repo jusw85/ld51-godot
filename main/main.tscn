@@ -75,13 +75,12 @@ custom_colors/font_color = Color( 0.92549, 0.964706, 0.101961, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "0"
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 116, 95 )
-walk_speed = 400.0
-
 [node name="Stage" type="Node2D" parent="."]
 
 [node name="Node2D" parent="Stage" instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+walk_speed = 400.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="gems_changed" from="Player" to="." method="_on_Player_gems_changed"]

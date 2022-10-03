@@ -7,7 +7,8 @@ signal moved
 export var walk_speed := 100.0
 export var power := 400.0
 var gems := 0
-var paused = false
+var paused := false
+var gooped := 0.0
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
 
@@ -24,7 +25,7 @@ func _physics_process(_delta) -> void:
 
 	emit_signal("moved")
 
-	var velocity = dir * walk_speed
+	var velocity = dir * (walk_speed / (gooped + 1.0))
 	move_and_slide(velocity)
 
 	for i in get_slide_count():
