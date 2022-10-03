@@ -20,7 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	label.text = str("%d" % hp)
-	if upgrading:
+	if upgrading && player.gems >= 5:
 		hp = clamp(hp - (delta * upgrade_speed), 0, hp)
 		if hp <= 0:
 			hp = 100

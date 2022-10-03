@@ -9,8 +9,14 @@ export var power := 400.0
 var gems := 0
 var paused := false
 var gooped := 0.0
+var goop_shoes := false
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
+
+
+func _ready():
+	if goop_shoes:
+		get_node("/root/Main/CanvasLayer/Label3").visible = true
 
 
 func _physics_process(_delta) -> void:
@@ -25,7 +31,11 @@ func _physics_process(_delta) -> void:
 
 	emit_signal("moved")
 
-	var velocity = dir * (walk_speed / (gooped + 1.0))
+	var velocity
+	if goop_shoes:
+		velocity = dir * walk_speed
+	else:
+		velocity = dir * (walk_speed / (gooped + 1.0))
 	move_and_slide(velocity)
 
 	for i in get_slide_count():

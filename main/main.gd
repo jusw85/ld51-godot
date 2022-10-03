@@ -2,8 +2,8 @@
 extends Node2D
 
 onready var timer = $Timer
-onready var timer_label = $CanvasLayer/Label
-onready var gem_label = $CanvasLayer/Label2
+onready var timer_label = $CanvasLayer/VBoxContainer/Label
+onready var gem_label = $CanvasLayer/VBoxContainer/Label2
 #onready var upgrade = $CanvasLayer/upgrade
 onready var canvas = $CanvasLayer
 onready var player = $Player
@@ -85,6 +85,7 @@ func _on_upgrade_exit():
 
 	var new_stage
 	if _stage_number % 5 == 0:
+#	if _stage_number % 2 == 0:
 		new_stage = LevelUpgrade.instance()
 	else:
 		var new_stage_num = ((_prev_stage_num + 1) + (randi() % (Levels.size() - 1))) % Levels.size()

@@ -7,9 +7,10 @@ extends Node2D
 
 
 var upgrading := false
-var hp := 100.0
+var hp := 500.0
 var player
 onready var label = $Label
+onready var label2 = $Label2
 export var upgrade_speed := 100
 
 # Called when the node enters the scene tree for the first time.
@@ -19,17 +20,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if player == null:
+		player = get_tree().get_nodes_in_group("player")[0]
+		if player.goop_shoes:
+			hp = 0
+			label2.text = "Bought!"
+
 	label.text = str("%d" % hp)
-	if upgrading && player.gems >= 5:
+	if upgrading && player.gems >= 20 && !player.goop_shoes:
 		hp = clamp(hp - (delta * upgrade_speed), 0, hp)
 		if hp <= 0:
-			hp = 100
-			player.power += 50
-			player.add_gems(-5)
+			player.goop_shoes = true
+			player.add_gems(-20)
+			get_node("/root/Main/CanvasLayer/Label3").visible = true
 
 
-func _on_Area2D_body_entered(body):
-	player = body
+func _on_Area2D_body_entered(_body):
 	upgrading = true
 
 
