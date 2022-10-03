@@ -12,11 +12,12 @@ var gooped := 0.0
 var goop_shoes := false
 
 onready var directional_input: NC.DirectionalInput = $DirectionalInput
+onready var goop_label = $Panel
 
 
 func _ready():
 	if goop_shoes:
-		get_node("/root/Main/CanvasLayer/Label3").visible = true
+		goop_label.visible = true
 
 
 func _physics_process(_delta) -> void:

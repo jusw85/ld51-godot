@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://main/player.png" type="Texture" id=1]
 [ext_resource path="res://common/directional_input.gd" type="Script" id=2]
 [ext_resource path="res://main/player.gd" type="Script" id=3]
+[ext_resource path="res://font.tres" type="DynamicFontData" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 100.0
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 4 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
 collision_layer = 0
@@ -31,3 +40,29 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = -24.0
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 4 )
+text = "me"
+align = 1
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+margin_left = -20.0
+margin_top = 13.0
+margin_right = 20.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_right = 40.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.415686, 0.745098, 0.188235, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "shoes"

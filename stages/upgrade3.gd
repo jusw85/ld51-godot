@@ -32,7 +32,7 @@ func _process(delta):
 		if hp <= 0:
 			player.goop_shoes = true
 			player.add_gems(-20)
-			get_node("/root/Main/CanvasLayer/Label3").visible = true
+			player.goop_label.visible = true
 
 
 func _on_Area2D_body_entered(_body):
