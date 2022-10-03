@@ -22,6 +22,10 @@ func _ready():
 	Events.connect("stage_exited", self, "_on_stage_exit")
 	Events.connect("upgrade_exited", self, "_on_upgrade_exit")
 
+#	player.walk_speed = 1000
+#	player.power = 10000
+#	player.gems = 1000
+
 
 func _on_Timer_timeout():
 	var end = load("res://end/end.tscn").instance()
@@ -47,17 +51,26 @@ func _on_Player_moved():
 
 
 func _on_stage_exit():
+#	_stage_number += 1
+#
+#	player.paused = true
+#	player.visible = false
+#	player.position = Vector2(-1000, -1000)
+#
+#	timer_label.visible = false
+#	timer.stop()
+#	stage.get_child(0).queue_free()
+#
+#	var upgrade = load("res://upgrade/upgrade.tscn").instance()
+#	canvas.add_child(upgrade)
+
+
 	_stage_number += 1
-	player.paused = true
-	player.visible = false
 	player.position = Vector2(-1000, -1000)
-
-	timer_label.visible = false
-	timer.stop()
+	yield(get_tree(), "idle_frame")
+	stage.get_child(0).connect("tree_exited", self, "_on_upgrade_exit")
 	stage.get_child(0).queue_free()
-
-	var upgrade = load("res://upgrade/upgrade.tscn").instance()
-	canvas.add_child(upgrade)
+#	_on_upgrade_exit()
 
 
 func _on_upgrade_exit():
@@ -66,15 +79,23 @@ func _on_upgrade_exit():
 
 	timer_label.visible = true
 	timer.start()
-	timer.stop()
-	timer_label.text = "%.2f" % timer.wait_time
+#	timer.stop()
+#	timer_label.text = "%.2f" % timer.wait_time
 
-	var stage_num = (randi() % 5) + 1
-	var new_stage = load("res://stages/stage" + str(stage_num) + ".tscn").instance()
+	var new_stage
+	if _stage_number % 4 == 0:
+		new_stage = LevelUpgrade.instance()
+	else:
+		var level = Levels[randi() % Levels.size()]
+		new_stage = level.instance()
+
+#	new_stage = LevelUpgrade.instance()
+#	new_stage = Levels[1].instance()
 	new_stage.difficulty_modifier = _stage_number
 	stage.add_child(new_stage)
 	var spawn = get_tree().get_nodes_in_group("spawn")[0]
 	player.position = spawn.position
+
 
 const Levels = [
 	preload("res://stages/stage1.tscn"),

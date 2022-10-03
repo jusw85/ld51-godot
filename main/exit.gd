@@ -13,4 +13,5 @@ func _ready():
 
 
 func _on_Area2D_body_entered(_body):
+#	print(_body)
 	Events.emit_signal("stage_exited")

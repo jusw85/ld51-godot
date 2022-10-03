@@ -29,12 +29,13 @@ func _ready():
 				_add_node(pos.y, pos.x, Exit.instance())
 
 		tilemap.set_cell(pos.x, pos.y, TileMap.INVALID_CELL)
+	pass
 
 
 func _add_node(p_y: int, p_x: int, p_instance: Node, p_centred: bool = true):
-	add_child(p_instance)
 	var local_pos = tilemap.map_to_world(Vector2(p_x, p_y))
 	if p_centred:
 		local_pos += (tilemap.cell_size / 2.0)
 	p_instance.position = local_pos
+	add_child(p_instance)
 
