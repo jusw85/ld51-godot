@@ -9,7 +9,8 @@ onready var canvas = $CanvasLayer
 onready var player = $Player
 onready var stage = $Stage
 
-var _stage_number := 0
+var _stage_number := 1
+var _prev_stage_num := 0
 
 func _ready():
 	randomize()
@@ -83,15 +84,16 @@ func _on_upgrade_exit():
 #	timer_label.text = "%.2f" % timer.wait_time
 
 	var new_stage
-	if _stage_number % 4 == 0:
+	if _stage_number % 5 == 0:
 		new_stage = LevelUpgrade.instance()
 	else:
-		var level = Levels[randi() % Levels.size()]
-		new_stage = level.instance()
+		var new_stage_num = ((_prev_stage_num + 1) + (randi() % (Levels.size() - 1))) % Levels.size()
+		_prev_stage_num = new_stage_num
+		new_stage = Levels[new_stage_num].instance()
 
 #	new_stage = LevelUpgrade.instance()
 #	new_stage = Levels[1].instance()
-	new_stage.difficulty_modifier = _stage_number
+	new_stage.difficulty_modifier = _stage_number - 1
 	stage.add_child(new_stage)
 	var spawn = get_tree().get_nodes_in_group("spawn")[0]
 	player.position = spawn.position
