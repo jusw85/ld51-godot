@@ -7,7 +7,7 @@ extends Node2D
 
 
 var upgrading := false
-var hp := 100.0
+var hp := 2000.0
 var player
 onready var label = $Label
 onready var label2 = $Label2
