@@ -11,6 +11,7 @@ const Goop := preload("res://main/goop.tscn")
 const Unbreakable := preload("res://main/unbreakable.tscn")
 const Toll := preload("res://main/toll.tscn")
 const Fatgem := preload("res://main/fatgem.tscn")
+const Exit2 := preload("res://end/exit2.tscn")
 var difficulty_modifier = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -47,6 +48,8 @@ func process_tilemap(tilemap):
 				_add_node(pos.y, pos.x, Toll.instance())
 			"fatgem":
 				_add_node(pos.y, pos.x, Fatgem.instance())
+			"exit2":
+				_add_node(pos.y, pos.x, Exit2.instance())
 
 		tilemap.set_cell(pos.x, pos.y, TileMap.INVALID_CELL)
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://stages/stage.tres" type="TileSet" id=1]
 [ext_resource path="res://stages/stage.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://stages/upgrade4.gd" type="Script" id=8]
 [ext_resource path="res://stages/upgrade5.gd" type="Script" id=9]
 [ext_resource path="res://stages/upgrade6.gd" type="Script" id=10]
+[ext_resource path="res://stages/upgrade7.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -65,7 +66,7 @@ Walking Speed ( -5)"
 align = 1
 
 [node name="Upgrade2" type="Node2D" parent="."]
-position = Vector2( 882, 74 )
+position = Vector2( 259, 82 )
 z_index = 1
 script = ExtResource( 6 )
 __meta__ = {
@@ -98,7 +99,7 @@ text = "Upgrade
 Bash ( -5)"
 
 [node name="Upgrade4" type="Node2D" parent="."]
-position = Vector2( 879, 428 )
+position = Vector2( 418, 82 )
 z_index = 1
 script = ExtResource( 8 )
 __meta__ = {
@@ -131,7 +132,7 @@ text = "Upgrade
 Magnet ( -5)"
 
 [node name="Upgrade5" type="Node2D" parent="."]
-position = Vector2( 491, 77 )
+position = Vector2( 854, 83 )
 z_index = 1
 script = ExtResource( 9 )
 __meta__ = {
@@ -228,6 +229,41 @@ margin_bottom = 7.0
 custom_fonts/font = SubResource( 3 )
 text = "Lantern (-20)"
 
+[node name="Upgrade7" type="Node2D" parent="."]
+position = Vector2( 860, 427 )
+z_index = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Upgrade7"]
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Upgrade7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrade7/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Upgrade7"]
+margin_left = -30.0
+margin_top = 15.0
+margin_right = 30.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+text = "2000"
+align = 1
+
+[node name="Label2" type="Label" parent="Upgrade7"]
+margin_left = -60.0
+margin_top = -53.0
+margin_right = 66.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 3 )
+text = "Unlock
+Final Exit (-100)"
+align = 1
+
 [connection signal="body_entered" from="Upgrade1/Area2D" to="Upgrade1" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Upgrade1/Area2D" to="Upgrade1" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Upgrade2/Area2D" to="Upgrade2" method="_on_Area2D_body_entered"]
@@ -240,3 +276,5 @@ text = "Lantern (-20)"
 [connection signal="body_exited" from="Upgrade3/Area2D" to="Upgrade3" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Upgrade6/Area2D" to="Upgrade6" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Upgrade6/Area2D" to="Upgrade6" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Upgrade7/Area2D" to="Upgrade7" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Upgrade7/Area2D" to="Upgrade7" method="_on_Area2D_body_exited"]
