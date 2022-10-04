@@ -230,7 +230,7 @@ custom_fonts/font = SubResource( 3 )
 text = "Lantern (-20)"
 
 [node name="Upgrade7" type="Node2D" parent="."]
-position = Vector2( 860, 427 )
+position = Vector2( 854, 244 )
 z_index = 1
 script = ExtResource( 11 )
 __meta__ = {

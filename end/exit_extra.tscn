@@ -10,8 +10,8 @@ script = ExtResource( 2 )
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 8, 5, 0, 9, 5, 0, 10, 5, 0, 65544, 5, 0, 65545, 8, 0, 65546, 5, 0, 131080, 5, 0, 131082, 5, 0 )
+tile_data = PoolIntArray( 393229, 5, 0, 393230, 5, 0, 458766, 8, 0 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 608, 160 )
+position = Vector2( 864, 480 )
 hp = 3000.0
