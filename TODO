@@ -1,29 +1,35 @@
-
-Fatgem
-super gem (worth > 1) to save on space
-  super gem not as magnetic
+Cap upgrades to prevent OP
 
 
-Teleporter / Portal
-Ice
-One way gates
-Conveyorbelt
-Lava
+Tiles ideas:
+- Teleporter / Portal
+- Ice (Slippery)
+- One way gates
+- Conveyor belt (Move faster)
+- Lava
 
 
-red exit to trigger ending sequence challenge stages
+Ending sequence 
+- Triggered by entering red exit
+- Red exit appears randomly based on some condition e.g. total upgrades / stages cleared / total coins
+- Sequence of challenge stages
+- Final stage is pickup chalice
+- Ending splash
 
-more stages
+
+Create more stages
 
 
+Skills
+- Bash / Berserk (increase walk_speed + power)
+- Random teleport
+- Roar (destroy surrounding blocks, possible expanding red circle visual)
+- Skill upgrades
 
-skills
-  bash/berserk (increase walk_speed + power)
-  teleport
-  roar (destroy surrounding blocks, possible expanding red circle visual)
 
-activate skills
-upgrade skills
+Upgrade to avoid tolls
+Toll gate animation
+Prevent toll gate passable if gems <= 0
 
-upgrade avoid tolls
-switch to raycast
+
+Switch to raycast
