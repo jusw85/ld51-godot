@@ -25,6 +25,7 @@ func _process(delta):
 		if hp <= 0:
 			hp = 100
 			player.magnet.shape.radius += 8
+			player.magnet2.shape.radius = player.magnet.shape.radius / 4.0
 			player.add_gems(-5)
 
 

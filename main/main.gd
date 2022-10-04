@@ -15,6 +15,7 @@ var _prev_stage_num := 0
 func _ready():
 	randomize()
 
+	stage.add_child(Levels[0].instance())
 	var spawn = get_tree().get_nodes_in_group("spawn")[0]
 	player.position = spawn.position
 
@@ -105,17 +106,21 @@ func _on_upgrade_exit():
 	player.position = spawn.position
 
 
+#const Levels = [
+#	preload("res://stages/stage1.tscn"),
+#	preload("res://stages/stage2.tscn"),
+#	preload("res://stages/stage3.tscn"),
+#	preload("res://stages/stage4.tscn"),
+#	preload("res://stages/stage5.tscn"),
+#	preload("res://stages/stage6.tscn"),
+#	preload("res://stages/stage7.tscn"),
+#	preload("res://stages/stage8.tscn"),
+#	preload("res://stages/stage9.tscn"),
+#	preload("res://stages/stage10.tscn"),
+#	preload("res://stages/stage11.tscn"),
+#]
 const Levels = [
 	preload("res://stages/stage1.tscn"),
-	preload("res://stages/stage2.tscn"),
-	preload("res://stages/stage3.tscn"),
-	preload("res://stages/stage4.tscn"),
-	preload("res://stages/stage5.tscn"),
-	preload("res://stages/stage6.tscn"),
-	preload("res://stages/stage7.tscn"),
-	preload("res://stages/stage8.tscn"),
-	preload("res://stages/stage9.tscn"),
-	preload("res://stages/stage10.tscn"),
 	preload("res://stages/stage11.tscn"),
 ]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://main/player.png" type="Texture" id=1]
 [ext_resource path="res://common/directional_input.gd" type="Script" id=2]
@@ -11,6 +11,9 @@ extents = Vector2( 24, 24 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 36.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 8.0
 
 [sub_resource type="DynamicFont" id=4]
 size = 36
@@ -82,6 +85,13 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource( 9 )
 
 [node name="Label2" type="Label" parent="."]
 margin_left = -24.0

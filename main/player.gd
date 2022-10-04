@@ -18,6 +18,7 @@ onready var directional_input: NC.DirectionalInput = $DirectionalInput
 onready var goop_label = $Panel
 onready var money_label = $Panel2/Label
 onready var magnet = $Area2D/CollisionShape2D
+onready var magnet2 = $Area2D2/CollisionShape2D
 
 onready var mask: Sprite = $Mask
 var mask_size setget set_mask_size, get_mask_size
