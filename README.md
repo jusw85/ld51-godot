@@ -1,6 +1,6 @@
 # Ludum Dare 51 - Theme: Every 10 seconds
 Ludum Dare 51 in Godot
 
-Title: TBD
+Title: Gem Collector
 
-https://ldjam.com/events/ludum-dare/51/tbd
+https://ldjam.com/events/ludum-dare/51/gem-collector
